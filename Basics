@@ -1,0 +1,62 @@
+#Open the Windows feature on and off from the search button, then turn on the Windows Subsystem Linux and restart the computer.
+cd /mnt #Then install Ubuntu or WSL
+ls      #To check the content of the directory, we have to type ls and enter
+cd ..   #to go back one directory
+cd      #to go to the root directory
+pwd     #to know the path you are in
+sudo apt install(name_of_the_tool) #to install tools in wal
+sudo apt update                    #when you are running your WSL for the first time
+sudo apt upgrade                   # first-time users
+sudo apt install fastqc            #to install the fastqc file
+fastqc                             #just to check whether FastQC is installed properly or not
+sudo apt install bwa               #to install bwa
+bwa
+sudo apt install samtools          #to install samtools
+samtools
+sudo apt install hisat2            #to install histat2
+hisat2
+
+#To download the trimmomatic tool, we have to go to a website http://www.usadellab.org/cms/?page=trimmomatic
+#Then, in the most recent Version 0.39, you will see binary, source, and manual. You will click the binary mode. It will download the zip file.
+#Extract the Zip file
+#There will be one jar file, which means it is a Java file, and we have to install Java too
+#To download the GATK, we have to first go to the website, then https://github.com/broadinstitute/gatk/releases   then the latest GATK link will be there.
+#Click the Download release: gatk-4.6.2.0.zip
+#It will download the file, and we will extract the file to our desired location, for example, "/mnt/d/udemy/NGS/gatk-4.6.0.0:$PATH"
+
+#Then
+Here's an explanation of the commands related to modifying your PATH environment variable to
+include the GATK tool:
+
+1. nano ~/.bashrc
+  
+Purpose: Opens the .bashrc file in the Nano text editor.
+.bashrc is a configuration file for Bash (your shell) that runs every time you start a new terminal
+session.
+Located in your home directory (~).
+Why: To edit environment variables or add custom settings (like adding tools to your PATH).
+
+2. export PATH=/mnt/d/udemy/NGS/gatk-4.6.0.0:$PATH
+  
+Purpose: Adds the GATK directory to your PATH environment variable.
+PATH: A list of directories where your system looks for executable programs.
+/mnt/d/udemy/NGS/gatk-4.6.0.0: The path to your GATK installation.
+$PATH: Appends the existing PATH to retain previous entries.
+What this does:
+Prepends the GATK directory to your PATH, allowing you to run GATK commands (e.g., gatk
+HaplotypeCaller) from any directory.
+Without this, you’d need to specify the full path to GATK (e.g., /mnt/d/udemy/NGS/gatk-
+4.6.0.0/gatk).
+
+control+x #to exit
+  y #to save the files
+
+3. source ~/.bashrc
+  
+Purpose: Reloads the .bashrc file to apply changes without restarting the terminal.
+source: Executes the file in the current shell session.
+Why Do This?
+GATK Accessibility: After adding GATK to your PATH, you can run gatk commands globally.
+Permanent Change: Modifying .bashrc ensures the PATH update persists across terminal
+sessions.
+
