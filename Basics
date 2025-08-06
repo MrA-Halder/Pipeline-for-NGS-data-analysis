@@ -65,7 +65,11 @@ sessions.
 fastqc nameofthefastq.gz
 ls                            #Now you can see new files in the document 
 #or
-#We can use this code for multiple fastqc in single run
+#We can use this code for multiple fastqc in a single run
 fastqc file1.fastq.gz file2.fastq.gz file3.fastq.gz
+ls                            #Now you can see new files in the document
 
+#Now we will trim the fastq files
+#First, we will copy all the extracted trimomatic contents (3) into the folder where our NGS or FastQ file is present ( The files are Java file
 
+java -jar
