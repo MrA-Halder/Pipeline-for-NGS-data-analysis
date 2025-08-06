@@ -56,7 +56,16 @@ control+x #to exit
 Purpose: Reloads the .bashrc file to apply changes without restarting the terminal.
 source: Executes the file in the current shell session.
 Why Do This?
-GATK Accessibility: After adding GATK to your PATH, you can run gatk commands globally.
+GATK Accessibility: After adding GATK to your PATH, you can run GATK commands globally.
 Permanent Change: Modifying .bashrc ensures the PATH update persists across terminal
 sessions.
+
+
+#Now to run FastQC we have to go to the location where the fastq is present
+fastqc nameofthefastq.gz
+ls                            #Now you can see new files in the document 
+#or
+#We can use this code for multiple fastqc in single run
+fastqc file1.fastq.gz file2.fastq.gz file3.fastq.gz
+
 
