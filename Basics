@@ -62,7 +62,7 @@ sessions.
 
 
 #Now to run FastQC we have to go to the location where the fastq is present
-fastqc nameofthefastq.gz
+fastqc nameofthefastq.fastq.gz
 ls                            #Now you can see new files in the document 
 #or
 #We can use this code for multiple fastqc in a single run
@@ -72,4 +72,26 @@ ls                            #Now you can see new files in the document
 #Now we will trim the fastq files
 #First, we will copy all the extracted trimomatic contents (3) into the folder where our NGS or FastQ file is present ( The files are Java file
 
-java -jar
+java -jar trimmomatic-0.39.jar SE -threads 4 nameofthefastq.fastq.gz nameofthefastq_trimmed.fastq.gz TRAILING:10 -phred33
+
+
+#Command Breakdown:
+
+#java -jar trimmomatic-0.39.jar
+#Runs Trimmomatic (a Java-based tool for trimming sequencing reads). trimmomatic-0.39.jar: The JAR file for Trimmomatic version 0.39.
+
+#SE
+#Single-End Mode: The input data is single-end (not paired-end). For paired-end data, use PE and specify two input/output files.
+
+#-threads 4
+#Use 4 CPU threads to speed up processing.
+
+#Input/Output Files:
+#Input: nameofthefastq.fastq.gz (gzipped FASTQ file). Output: nameofthefastq_trimmed.fastq.gz (trimmed reads, also compressed).
+
+#Trimming Steps:
+
+#TRAILING:10: Remove trailing bases with a quality score below 10 (using the Phred+33 scale). This helps eliminate low-quality bases from the end of reads.
+
+#-phred33 : Specifies the quality encoding of the input FASTQ file (Phred+33, standard for Illumina 1.8+).
+
