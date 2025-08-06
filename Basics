@@ -95,3 +95,17 @@ java -jar trimmomatic-0.39.jar SE -threads 4 nameofthefastq.fastq.gz nameofthefa
 
 #-phred33 : Specifies the quality encoding of the input FASTQ file (Phred+33, standard for Illumina 1.8+).
 
+To end the process for that day
+# Remove large temporary files
+rm -rf output/
+rm -rf ~/multiqc*
+rm -rf /tmp/tmp*
+
+Clean conda cache (this can free lots of space)
+conda clean --all -y
+
+exit
+
+after restarting 
+free -h
+df -h
