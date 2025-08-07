@@ -95,6 +95,57 @@ java -jar trimmomatic-0.39.jar SE -threads 4 nameofthefastq.fastq.gz nameofthefa
 
 #-phred33 : Specifies the quality encoding of the input FASTQ file (Phred+33, standard for Illumina 1.8+).
 
+# Quality control on trimmed files
+nameofthefastq_trimmed.fastq.gz
+
+# Method 1: Create a new conda environment and install via apt (RECOMMENDED - this worked for you!)
+conda create --name myenv python=3.11
+conda activate myenv
+sudo apt install multiqc
+
+# Verify installation
+multiqc --version
+
+# Navigate to directory containing FastQC output files
+cd /path/to/your/fastqc/results
+ls
+# Run MultiQC to aggregate all FastQC reports
+multiqc .
+
+Looking at your current memory status:
+Mem:   7.6Gi total, 663Mi used, 6.8Gi free, 7.0Gi available
+Swap:  2.0Gi total, 0B used, 2.0Gi free
+
+To increase these
+Check Your WSL Version:
+cat /proc/version
+
+Exit WSL and go to Windows:
+exit
+
+From Windows Command Prompt/PowerShell:
+# Check WSL version
+wsl -l -v
+
+# Create .wslconfig file (in Windows)
+notepad %USERPROFILE%\.wslconfig
+
+Add this content to the .wslconfig file:
+[wsl2]
+memory=12GB
+swap=4GB
+processors=6
+
+Restart WSL:
+wsl --shutdown
+wsl
+
+free -h
+
+              total        used        free      shared  buff/cache   available
+Mem:            12Gi       500Mi        11Gi       4.0Mi       200Mi        11Gi
+Swap:           4.0Gi         0B       4.0Gi
+
 To end the process for that day
 # Remove large temporary files
 rm -rf output/
